@@ -93,11 +93,13 @@ async function createUser() {
 
 
 
-getUsers()
+
 getAllUsers()
+getUsers()
 getreslist()
 getsingleres()
+singleresnotfound()
 singleusernotfound()
 createUser()
-singleresnotfound()
+
 

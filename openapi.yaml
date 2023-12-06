@@ -1,0 +1,183 @@
+openapi: 3.0.0
+info:
+  title: Spintly
+  version: 1.0.0
+paths:
+  /createUser:
+    post:
+      summary: Create a new user
+      description: Add a new User.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                 type: integer
+                 example: 123
+                name:
+                  type: string
+                  example: Alan
+                job:
+                  type: string
+                  example: Doctor
+                email:
+                  type: string
+                  example: Alan.Smith@test.com
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                id: 123
+                name: Alan
+                job: Doctor
+                email: Alan.Smith@test.com
+               
+                
+                
+
+  /getAllUsers:
+    get:
+      summary: Get all users
+      description: Retrieve all users from reqres.in.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        email:
+                          type: string
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        avatar:
+                          type: string
+  
+  /getresourcelist:
+    get:
+      summary: Get list of resources
+      description: Retrieve a list of resources  from reqres.in.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        year:
+                          type: integer
+                        color:
+                          type: string
+                        pantone_value:
+                          type: string
+                          
+  
+  /getsingleuser/{id}:
+    get:
+      summary: Get user
+      description: Retrieve a user by using thier ID.
+      parameters:
+        - name: id
+          in: path
+          description: using ID of the user to retrieve the user.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response, User found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  email:
+                    type: string
+                  first_name:
+                    type: string
+                  last_name:
+                    type: string
+                  avatar:
+                    type: string
+
+        '404':
+          description: User not found
+          content:
+            application/json:
+              example:
+                error:
+                  code: 404
+                  message: User not found
+                  
+          
+  /getsingleresource/{id}:
+    get:
+      summary: Get single resource.
+      description: Retrieve a resource by ID.
+      parameters:
+        - name: id
+          in: path
+          description: ID of the resource to retrieve.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response, resource found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  year:
+                    type: integer
+                  color:
+                    type: string
+                  pantone_value:
+                    type: string
+
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              example:
+                error:
+                  code: 404
+                  message: Resource not found
+                                          
+                          
+                        
+                          
+                
+                  
